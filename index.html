@@ -537,7 +537,23 @@
 
     const navLinks = document.getElementById('navLinks');
     document.getElementById('burger').addEventListener('click', () => navLinks.classList.toggle('open'));
-    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+    // Smooth scroll for all in-page anchors, offset for the fixed navbar
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const id = a.getAttribute('href');
+        if (id.length > 1) {
+          const target = document.querySelector(id);
+          if (target) {
+            e.preventDefault();
+            const y = target.getBoundingClientRect().top + window.scrollY - 70;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+            history.pushState(null, '', id);
+          }
+        }
+        navLinks.classList.remove('open');
+      });
+    });
 
     const links = [...navLinks.querySelectorAll('a')];
     const spy = new IntersectionObserver((es) => es.forEach(e => {
