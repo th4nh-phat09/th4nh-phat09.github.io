@@ -1,196 +1,565 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nguyen An Thanh Phat — Backend Developer</title>
-  <meta name="description" content="Portfolio of Nguyen An Thanh Phat — Backend Developer, student at HCMUT." />
+  <title>Nguyen An Thanh Phat — Software Engineer</title>
+  <meta name="description" content="Nguyen An Thanh Phat — Software Engineer focused on backend development. HCMUTE." />
+  <meta name="theme-color" content="#0077b6" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #0d1117;
-      --bg-card: #161b22;
-      --border: #21262d;
-      --text: #e6edf3;
-      --text-dim: #8b949e;
-      --accent: #58a6ff;
-      --accent-2: #3fb950;
-      --radius: 12px;
+      --bg: #ffffff;
+      --bg-2: #f1f7fb;
+      --card: #ffffff;
+      --line: #e3eaf1;
+      --line-soft: #eef3f8;
+      --fg: #0b2540;
+      --fg-dim: #50657c;
+      --fg-faint: #8aa0b4;
+      --accent: #0077b6;
+      --accent-deep: #023e8a;
+      --accent-soft: #e4f2fb;
+      --white: #ffffff;
+      --display: "Bricolage Grotesque", "Inter", system-ui, sans-serif;
+      --body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      --max: 1080px;
+      --shadow: 0 1px 2px rgba(11,37,64,0.04), 0 10px 30px rgba(11,37,64,0.07);
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
+      font-family: var(--body);
+      background: var(--bg); color: var(--fg);
+      line-height: 1.7; -webkit-font-smoothing: antialiased; overflow-x: hidden;
+      font-size: 16px;
     }
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .wrap { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3, .contact-lead { font-family: var(--display); }
+    ::selection { background: var(--accent); color: #fff; }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 28px; }
 
-    /* Hero */
-    header {
-      padding: 90px 0 60px;
-      border-bottom: 1px solid var(--border);
-    }
-    .eyebrow {
-      color: var(--accent-2);
-      font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
-      font-size: 0.9rem;
-      letter-spacing: 0.5px;
-    }
-    h1 {
-      font-size: clamp(2.2rem, 6vw, 3.4rem);
-      font-weight: 800;
-      margin: 8px 0 6px;
-      letter-spacing: -1px;
-    }
-    .role {
-      font-size: clamp(1.1rem, 3vw, 1.5rem);
-      color: var(--text-dim);
-      font-weight: 500;
-    }
-    .bio { margin-top: 18px; color: var(--text-dim); max-width: 620px; }
-    .links { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 12px; }
-    .btn {
-      display: inline-flex; align-items: center; gap: 7px;
-      padding: 9px 16px;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      background: var(--bg-card);
-      color: var(--text);
-      font-size: 0.92rem;
-      transition: border-color .15s, transform .15s;
-    }
-    .btn:hover { border-color: var(--accent); text-decoration: none; transform: translateY(-2px); }
+    /* index numbers + labels */
+    .idx { font-family: var(--mono); font-size: 0.78rem; color: var(--fg-faint); letter-spacing: 1px; }
+    .sec-head { display: flex; align-items: baseline; gap: 16px; margin-bottom: 56px; }
+    .sec-head h2 { font-size: clamp(1.6rem, 4vw, 2.1rem); font-weight: 650; letter-spacing: -0.8px; }
+    .sec-head .idx { padding-top: 4px; }
 
-    /* Sections */
-    section { padding: 56px 0; border-bottom: 1px solid var(--border); }
-    h2 {
-      font-size: 1.5rem;
-      margin-bottom: 26px;
-      display: flex; align-items: center; gap: 10px;
-    }
-    h2::before { content: "#"; color: var(--accent); font-weight: 700; }
+    section { padding: 110px 0; border-top: 1px solid var(--line-soft); }
 
-    /* Skills */
-    .skills { display: flex; flex-wrap: wrap; gap: 10px; }
-    .tag {
-      font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
-      font-size: 0.85rem;
-      padding: 6px 13px;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      color: var(--text-dim);
+    /* ---------- Nav ---------- */
+    nav {
+      position: fixed; inset: 0 0 auto 0; z-index: 100;
+      background: rgba(255,255,255,0.72); backdrop-filter: saturate(150%) blur(14px);
+      -webkit-backdrop-filter: saturate(150%) blur(14px);
+      border-bottom: 1px solid transparent; transition: border-color .3s, background .3s, box-shadow .3s;
+    }
+    nav.scrolled { border-bottom-color: var(--line); background: rgba(255,255,255,0.88); box-shadow: 0 6px 24px rgba(11,37,64,0.05); }
+    .nav-in { max-width: var(--max); margin: 0 auto; padding: 18px 28px; display: flex; align-items: center; justify-content: space-between; }
+    .brand { display: inline-flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: 0.92rem; letter-spacing: 0.5px; color: var(--fg); }
+    .logo-badge { display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 9px; background: var(--accent); color: #fff; flex: none; transition: transform .3s ease, background .25s; }
+    .brand:hover .logo-badge { transform: rotate(-9deg) scale(1.06); background: var(--accent-deep); }
+    .logo-badge svg { width: 17px; height: 17px; }
+    .brand-word { color: var(--fg); }
+    .nav-links { display: flex; gap: 4px; list-style: none; }
+    .nav-links a { font-family: var(--mono); font-size: 0.8rem; color: var(--fg-dim); padding: 8px 12px; border-radius: 7px; transition: color .2s, background .2s; }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-links a.active { color: var(--accent); background: var(--accent-soft); }
+    .burger { display: none; background: none; border: 1px solid var(--line); color: var(--fg); width: 38px; height: 38px; border-radius: 9px; cursor: pointer; font-size: 1rem; }
+
+    /* ---------- Hero ---------- */
+    #home { min-height: 100vh; display: flex; align-items: center; border-top: 0; padding-top: 90px; position: relative;
+      background:
+        radial-gradient(720px 420px at 88% 12%, var(--accent-soft), transparent 70%),
+        radial-gradient(540px 380px at -5% 90%, rgba(72,202,228,0.12), transparent 70%); }
+    .hero-grid { display: grid; grid-template-columns: 1.55fr 0.9fr; gap: 56px; align-items: center; }
+    .hero-aside { display: flex; justify-content: center; }
+    .portrait { position: relative; width: 100%; max-width: 320px; }
+    .portrait::before { content: ""; position: absolute; inset: 18px -18px -18px 18px; border-radius: 22px; background: var(--accent-soft); border: 1px solid var(--line); z-index: 0; }
+    .portrait img { position: relative; z-index: 1; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 22px; border: 1px solid var(--line); box-shadow: var(--shadow); transition: transform .4s, box-shadow .4s; display: block; }
+    .portrait:hover img { transform: translateY(-4px); box-shadow: 0 22px 50px rgba(2,62,138,0.16); }
+    .portrait.noimg { aspect-ratio: 4 / 5; display: flex; align-items: center; justify-content: center; background: linear-gradient(160deg, var(--accent-soft), #fff); border: 1px solid var(--line); border-radius: 22px; box-shadow: var(--shadow); position: relative; z-index: 1; }
+    .portrait-fallback { display: none; font-family: var(--display); font-weight: 800; font-size: 4.5rem; color: var(--accent); letter-spacing: -2px; }
+    .portrait.noimg .portrait-fallback { display: block; }
+    .hero-tag { font-family: var(--mono); font-size: 0.85rem; color: var(--fg-dim); margin-bottom: 26px; display: inline-flex; align-items: center; gap: 10px; }
+    .hero-tag::before { content: ""; width: 30px; height: 1px; background: var(--fg-faint); }
+    #home h1 { font-size: clamp(2.8rem, 9vw, 5.6rem); font-weight: 700; letter-spacing: -3px; line-height: 0.98; margin-bottom: 28px; }
+    #home h1 .thin { color: var(--accent); font-weight: 600; }
+    .hero-lead { max-width: 600px; font-size: clamp(1.05rem, 2.4vw, 1.3rem); color: var(--fg-dim); line-height: 1.6; margin-bottom: 38px; }
+    .hero-lead b { color: var(--fg); font-weight: 600; }
+    .hero-facts { display: flex; flex-wrap: wrap; gap: 0; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; max-width: 640px; margin-bottom: 38px; }
+    .hero-facts div { flex: 1 1 0; min-width: 150px; padding: 18px 22px; border-right: 1px solid var(--line); }
+    .hero-facts div:last-child { border-right: 0; }
+    .hero-facts .ft-k { font-family: var(--mono); font-size: 0.72rem; color: var(--fg-faint); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
+    .hero-facts .ft-v { font-size: 0.98rem; color: var(--fg); }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn { display: inline-flex; align-items: center; gap: 9px; padding: 12px 22px; border: 1px solid var(--line); border-radius: 999px; font-size: 0.9rem; color: var(--fg); transition: border-color .15s, transform .15s, background .15s, color .15s; }
+    .btn:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .btn.solid { background: var(--accent); color: var(--bg); border-color: var(--accent); font-weight: 600; }
+    .btn.solid:hover { background: var(--accent-deep); border-color: var(--accent-deep); }
+
+    /* ---------- About ---------- */
+    .about-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 64px; align-items: start; }
+    .about-text p { color: var(--fg-dim); margin-bottom: 18px; font-size: 1.05rem; }
+    .about-text p b { color: var(--fg); font-weight: 600; }
+    .edu-block { margin-top: 8px; }
+    .edu-block h3 { font-family: var(--mono); font-size: 0.78rem; color: var(--fg-faint); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
+    .edu-item { padding: 16px 0; border-top: 1px solid var(--line-soft); }
+    .edu-item:first-of-type { border-top: 0; }
+    .edu-item .deg { font-weight: 600; font-size: 1rem; }
+    .edu-item .sch { color: var(--fg-dim); font-size: 0.93rem; }
+    .edu-item .meta { font-family: var(--mono); font-size: 0.78rem; color: var(--fg-faint); margin-top: 4px; }
+
+    /* ---------- Skills ---------- */
+    .skill-rows { display: grid; gap: 0; }
+    .skill-row { display: grid; grid-template-columns: 200px 1fr; gap: 28px; padding: 26px 0; border-top: 1px solid var(--line-soft); align-items: start; }
+    .skill-row:first-child { border-top: 0; }
+    .skill-row .cat { font-family: var(--mono); font-size: 0.82rem; color: var(--fg-faint); text-transform: uppercase; letter-spacing: 0.8px; padding-top: 6px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 9px; }
+    .chip { font-size: 0.9rem; padding: 7px 15px; border: 1px solid var(--line); border-radius: 8px; color: var(--fg); transition: border-color .15s, transform .15s; }
+    .chip:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+    /* ---------- Awards ---------- */
+    .awards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .award { display: block; width: 100%; text-align: left; font: inherit; color: inherit; cursor: zoom-in; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 0; overflow: hidden; box-shadow: var(--shadow); transition: border-color .2s, transform .2s, box-shadow .2s; }
+    .award:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 18px 40px rgba(2,62,138,0.12); }
+    .award-thumb { aspect-ratio: 4 / 3; overflow: hidden; background: var(--bg-2); border-bottom: 1px solid var(--line); }
+    .award-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .35s; }
+    .award:hover .award-thumb img { transform: scale(1.04); }
+    .award-body { padding: 22px; }
+    .award .yr { font-family: var(--mono); font-size: 0.76rem; color: var(--fg-faint); letter-spacing: 1px; }
+    .award h3 { font-size: 1.02rem; font-weight: 600; margin: 10px 0 8px; line-height: 1.35; }
+    .award p { color: var(--fg-dim); font-size: 0.88rem; }
+
+    /* lightbox */
+    .lb { position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,0.92); display: none; align-items: center; justify-content: center; padding: 32px; cursor: zoom-out; }
+    .lb.open { display: flex; }
+    .lb img { max-width: 100%; max-height: 100%; border-radius: 10px; box-shadow: 0 20px 60px rgba(0,0,0,0.6); }
+    .lb .lb-x { position: absolute; top: 18px; right: 24px; background: none; border: 0; color: #fff; font-size: 2rem; line-height: 1; cursor: pointer; }
+
+    /* ---------- Projects ---------- */
+    .proj-feature { border: 1px solid var(--line); border-radius: 18px; padding: 40px; background: linear-gradient(180deg, var(--card), var(--bg-2)); box-shadow: var(--shadow); margin-bottom: 22px; }
+    .proj-feature .ptop { display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; flex-wrap: wrap; }
+    .proj-feature .role { font-family: var(--mono); font-size: 0.78rem; color: var(--fg-faint); text-transform: uppercase; letter-spacing: 1px; }
+    .proj-feature h3 { font-size: 1.7rem; font-weight: 650; letter-spacing: -0.5px; margin: 6px 0 14px; }
+    .proj-feature .desc { color: var(--fg-dim); max-width: 620px; margin-bottom: 22px; }
+    .feat-list { list-style: none; display: grid; gap: 10px; margin-bottom: 24px; }
+    .feat-list li { color: var(--fg-dim); font-size: 0.95rem; padding-left: 22px; position: relative; }
+    .feat-list li::before { content: "—"; position: absolute; left: 0; color: var(--fg-faint); }
+    .feat-list b { color: var(--fg); font-weight: 600; }
+    .stack { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
+    .stack span { font-family: var(--mono); font-size: 0.76rem; color: var(--fg-faint); border: 1px solid var(--line); padding: 4px 10px; border-radius: 6px; }
+    .proj-links { display: flex; flex-wrap: wrap; gap: 10px; }
+    .proj-links a { font-family: var(--mono); font-size: 0.82rem; padding: 8px 16px; border: 1px solid var(--line); border-radius: 999px; transition: border-color .15s, color .15s; }
+    .proj-links a:hover { border-color: var(--accent); }
+    .proj-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .pcard { display: block; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 26px; box-shadow: var(--shadow); transition: border-color .2s, transform .2s, box-shadow .2s; }
+    .pcard:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 18px 40px rgba(2,62,138,0.12); }
+    .pcard .ptop2 { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+    .pcard .arr { color: var(--fg-faint); transition: transform .2s, color .2s; }
+    .pcard:hover .arr { transform: translate(3px,-3px); color: var(--accent); }
+    .pcard h3 { font-size: 1.12rem; margin-bottom: 7px; }
+    .pcard p { color: var(--fg-dim); font-size: 0.9rem; margin-bottom: 14px; }
+
+    /* ---------- Experience ---------- */
+    .timeline { display: grid; gap: 0; }
+    .xp { display: grid; grid-template-columns: 220px 1fr; gap: 36px; padding: 34px 0; border-top: 1px solid var(--line-soft); }
+    .xp:first-child { border-top: 0; }
+    .xp .when { font-family: var(--mono); font-size: 0.82rem; color: var(--fg-faint); }
+    .xp .now { color: var(--accent); }
+    .xp h3 { font-size: 1.2rem; font-weight: 650; margin-bottom: 3px; }
+    .xp .co { color: var(--fg); font-size: 0.95rem; margin-bottom: 4px; }
+    .xp .loc { font-family: var(--mono); font-size: 0.78rem; color: var(--fg-faint); margin-bottom: 14px; }
+    .xp ul { list-style: none; display: grid; gap: 9px; }
+    .xp li { color: var(--fg-dim); font-size: 0.95rem; padding-left: 20px; position: relative; }
+    .xp li::before { content: "›"; position: absolute; left: 0; color: var(--fg-faint); }
+    .xp b { color: var(--fg); font-weight: 600; }
+
+    /* ---------- Contact ---------- */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+    .contact-solo { max-width: 640px; }
+    .contact-lead { font-size: clamp(1.3rem, 3vw, 1.8rem); font-weight: 600; letter-spacing: -0.5px; line-height: 1.3; margin-bottom: 28px; }
+    .contact-lead .dim { color: var(--fg-faint); }
+    .clinks { display: grid; gap: 2px; }
+    .clink { display: flex; align-items: center; gap: 14px; padding: 15px 0; border-top: 1px solid var(--line-soft); transition: padding-left .2s; }
+    .clink:hover { padding-left: 6px; }
+    .clink .ck { font-family: var(--mono); font-size: 0.76rem; color: var(--fg-faint); width: 70px; text-transform: uppercase; letter-spacing: 1px; }
+    .clink .cv { color: var(--fg); }
+    .clink .ci { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 11px; background: var(--accent-soft); color: var(--accent); flex: none; transition: background .2s, color .2s; }
+    .clink:hover .ci { background: var(--accent); color: #fff; }
+    .clink .ci svg { width: 19px; height: 19px; }
+    .btn svg { width: 16px; height: 16px; flex: none; }
+    .foot-links a { display: inline-flex; align-items: center; gap: 7px; }
+    .foot-links a svg { width: 15px; height: 15px; flex: none; }
+    form { display: grid; gap: 16px; }
+    .f2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    label { font-family: var(--mono); font-size: 0.74rem; color: var(--fg-faint); text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 8px; }
+    input, textarea { width: 100%; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 13px 15px; color: var(--fg); font-family: inherit; font-size: 0.95rem; transition: border-color .15s; }
+    input:focus, textarea:focus { outline: none; border-color: var(--accent); }
+    textarea { resize: vertical; min-height: 130px; }
+    .send { justify-self: start; padding: 13px 30px; background: var(--accent); color: var(--bg); border: 0; border-radius: 999px; font-weight: 650; font-size: 0.92rem; cursor: pointer; font-family: inherit; transition: transform .15s, opacity .15s; }
+    .send:hover { transform: translateY(-2px); opacity: .9; }
+
+    /* ---------- Footer ---------- */
+    footer { padding: 50px 0; border-top: 1px solid var(--line-soft); }
+    .foot-in { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+    .foot-in .fl { font-family: var(--mono); font-size: 0.82rem; color: var(--fg-faint); }
+    .foot-links { display: flex; gap: 18px; }
+    .foot-links a { font-family: var(--mono); font-size: 0.82rem; color: var(--fg-dim); transition: color .15s; }
+    .foot-links a:hover { color: var(--accent); }
+
+    /* reveal */
+    .rv { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
+    .rv.in { opacity: 1; transform: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+      .rv { opacity: 1; transform: none; }
     }
 
-    /* Projects */
-    .projects { display: grid; gap: 18px; }
-    .card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 22px 24px;
-      transition: border-color .15s, transform .15s;
+    @media (max-width: 860px) {
+      .nav-links { position: fixed; inset: 70px 0 auto 0; flex-direction: column; gap: 0; background: var(--bg-2); border-bottom: 1px solid var(--line); padding: 8px 28px 16px; transform: translateY(-140%); transition: transform .3s; }
+      .nav-links.open { transform: none; }
+      .nav-links a { padding: 14px 4px; border-bottom: 1px solid var(--line-soft); border-radius: 0; }
+      .burger { display: block; }
+      .hero-grid, .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      .portrait { max-width: 280px; margin: 0 auto; }
+      .skill-row, .xp { grid-template-columns: 1fr; gap: 12px; }
+      .awards, .proj-grid { grid-template-columns: 1fr; }
+      .proj-feature { padding: 28px; }
+      section { padding: 80px 0; }
     }
-    .card:hover { border-color: var(--accent); transform: translateY(-3px); }
-    .card h3 { font-size: 1.15rem; margin-bottom: 6px; }
-    .card p { color: var(--text-dim); font-size: 0.95rem; margin-bottom: 14px; }
-    .stack { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px; }
-    .stack span {
-      font-size: 0.78rem;
-      font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
-      color: var(--accent-2);
-      background: rgba(63,185,80,0.1);
-      padding: 3px 9px;
-      border-radius: 6px;
-    }
-    .card-links { display: flex; gap: 16px; font-size: 0.88rem; }
-
-    footer { padding: 50px 0; text-align: center; color: var(--text-dim); font-size: 0.9rem; }
   </style>
 </head>
 <body>
-  <header>
-    <div class="wrap">
-      <p class="eyebrow">Hi, my name is</p>
-      <h1>Nguyen An Thanh Phat</h1>
-      <p class="role">Backend Developer</p>
-      <p class="bio">
-        Sinh viên Đại học Bách Khoa TP.HCM (HCMUT). Mình tập trung xây dựng API,
-        microservices và hệ thống backend — quan tâm tới kiến trúc sạch, database
-        và DevOps. Luôn tìm cơ hội học và làm sản phẩm thật.
-      </p>
-      <div class="links">
-        <a class="btn" href="https://github.com/th4nh-phat09" target="_blank">↗ GitHub</a>
-        <a class="btn" href="mailto:thanphat354@gmail.com">✉ Email</a>
-        <a class="btn" href="https://www.linkedin.com/in/nguy%E1%BB%85n-an-th%C3%A0nh-ph%C3%A1t-a1a916365" target="_blank">in LinkedIn</a>
-        <a class="btn" href="tel:+84349475209">☎ 0349 475 209</a>
-      </div>
-    </div>
-  </header>
 
-  <section>
-    <div class="wrap">
-      <h2>Skills</h2>
-      <div class="skills">
-        <span class="tag">JavaScript</span>
-        <span class="tag">TypeScript</span>
-        <span class="tag">Python</span>
-        <span class="tag">Node.js</span>
-        <span class="tag">Express</span>
-        <span class="tag">PostgreSQL</span>
-        <span class="tag">MongoDB</span>
-        <span class="tag">Docker</span>
-        <span class="tag">Git</span>
-        <span class="tag">REST API</span>
+  <nav id="nav">
+    <div class="nav-in">
+      <a href="#home" class="brand" aria-label="Home — Nguyen An Thanh Phat">
+        <span class="logo-badge"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3 L20 7.5 L20 16.5 L12 21 L4 16.5 L4 7.5 Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="12" r="2.6" fill="currentColor"/></svg></span>
+        <span class="brand-word">natp09</span>
+      </a>
+      <button class="burger" id="burger" aria-label="menu">≡</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#Home">home</a></li>
+        <li><a href="#About">about</a></li>
+        <li><a href="#Skills">skills</a></li>
+        <li><a href="#Awards">awards</a></li>
+        <li><a href="#Projects">projects</a></li>
+        <li><a href="#Experience">experience</a></li>
+        <li><a href="#Contact">contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="home">
+    <div class="wrap hero-grid">
+      <div class="hero-main">
+        <span class="hero-tag">Software Engineer · Game Developer</span>
+        <h1>Nguyen An<br><span class="thin">Thanh Phat</span></h1>
+        <p class="hero-lead">
+          I build <b>backend</b> systems — APIs, microservices and databases for products that ship.
+          Final-year student at <b>HCMUTE</b>, currently a Game Developer at <b>ACE Galaxy</b>.
+        </p>
+        <div class="hero-facts">
+          <div><div class="ft-k">Role</div><div class="ft-v">Game Developer</div></div>
+          <div><div class="ft-k">Studies at</div><div class="ft-v">HCMUTE</div></div>
+          <div><div class="ft-k">Now</div><div class="ft-v">Game Dev @ ACE Galaxy</div></div>
+          <div><div class="ft-k">Location</div><div class="ft-v">Ho Chi Minh City</div></div>
+        </div>
+        <div class="cta-row">
+          <a class="btn solid" href="#contact">Get in touch</a>
+          <a class="btn" href="https://github.com/th4nh-phat09" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17 4.6 18 4.9 18 4.9c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>GitHub</a>
+          <a class="btn" href="https://www.linkedin.com/in/natp09" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>LinkedIn</a>
+          <a class="btn" href="assets/NguyenAnThanhPhatResume.pdf" target="_blank">Download CV ↓</a>
+        </div>
+      </div>
+      <div class="hero-aside">
+        <div class="portrait" id="portrait">
+          <img src="assets/avatar/avatar.jpg" alt="Nguyen An Thanh Phat"
+               onerror="document.getElementById('portrait').classList.add('noimg'); this.remove();" />
+          <span class="portrait-fallback">NP</span>
+        </div>
       </div>
     </div>
   </section>
 
-  <section>
-    <div class="wrap">
-      <h2>Projects</h2>
-      <div class="projects">
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap rv">
+      <div class="sec-head"><span class="idx">01</span><h2>About</h2></div>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            I'm <b>Nguyen An Thanh Phat</b>, a final-year <b>Software Engineering</b> student
+            at Ho Chi Minh City University of Technology and Education (HCMUTE).
+          </p>
+          <p>
+            I focus on <b>backend</b>: designing reliable APIs, optimizing databases and building
+            scalable, secure server-side architectures. I enjoy problems with real technical depth —
+            from splitting a monolith into microservices and tuning queries, to building real-time systems.
+          </p>
+          <p>
+            My goal is to become a strong Backend Developer — one who designs solid APIs,
+            manages data efficiently and ships products to real production.
+          </p>
+        </div>
+        <div class="edu-block">
+          <h3>Education</h3>
+          <div class="edu-item">
+            <div class="deg">Software Engineering</div>
+            <div class="sch">HCMUTE — University of Technology and Education</div>
+            <div class="meta">09/2022 – 06/2026 · Ho Chi Minh City</div>
+          </div>
+          <div class="edu-item">
+            <div class="deg">IT Honors Class</div>
+            <div class="sch">Le Khiet High School for the Gifted</div>
+            <div class="meta">09/2019 – 06/2022 · Quang Ngai</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <div class="card">
-          <h3>History Heritage API</h3>
-          <p>RESTful API phục vụ dữ liệu di sản lịch sử — thiết kế endpoint, xử lý dữ liệu và tài liệu hóa API.</p>
-          <div class="stack"><span>JavaScript</span><span>Node.js</span><span>REST API</span></div>
-          <div class="card-links">
-            <a href="https://github.com/th4nh-phat09/history-heritage-api" target="_blank">Source ↗</a>
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="wrap rv">
+      <div class="sec-head"><span class="idx">02</span><h2>Skills</h2></div>
+      <div class="skill-rows">
+        <div class="skill-row">
+          <div class="cat">Languages</div>
+          <div class="chips"><span class="chip">JavaScript</span><span class="chip">TypeScript</span><span class="chip">Java</span><span class="chip">SQL</span></div>
+        </div>
+        <div class="skill-row">
+          <div class="cat">Backend</div>
+          <div class="chips"><span class="chip">Node.js</span><span class="chip">NestJS</span><span class="chip">Express</span><span class="chip">Spring Boot</span><span class="chip">Prisma</span><span class="chip">REST API</span><span class="chip">JWT</span><span class="chip">Socket.io</span><span class="chip">SmartFoxServer 2X</span><span class="chip">Multithreading</span><span class="chip">Microservices</span></div>
+        </div>
+        <div class="skill-row">
+          <div class="cat">Frontend / Game Client</div>
+          <div class="chips"><span class="chip">React</span><span class="chip">React Native (Expo)</span><span class="chip">Next.js</span><span class="chip">Redux Toolkit</span><span class="chip">TailwindCSS</span><span class="chip">Cocos2d-x</span></div>
+        </div>
+        <div class="skill-row">
+          <div class="cat">Databases</div>
+          <div class="chips"><span class="chip">PostgreSQL</span><span class="chip">MySQL</span><span class="chip">MongoDB</span><span class="chip">Qdrant (Vector DB)</span></div>
+        </div>
+        <div class="skill-row">
+          <div class="cat">Tools & Workflow</div>
+          <div class="chips"><span class="chip">Docker</span><span class="chip">Git / GitHub</span><span class="chip">Postman</span><span class="chip">Jira</span><span class="chip">Slack</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AWARDS -->
+  <section id="awards">
+    <div class="wrap rv">
+      <div class="sec-head"><span class="idx">03</span><h2>Awards &amp; Certificates</h2></div>
+      <div class="awards">
+        <button class="award" type="button" data-img="assets/certs/webdev.jpg">
+          <div class="award-thumb"><img src="assets/certs/webdev.jpg" alt="WebDev Adventure 2025 — Third Prize certificate" loading="lazy" /></div>
+          <div class="award-body">
+            <div class="yr">2025</div>
+            <h3>Third Prize — WebDev Adventure 2025</h3>
+            <p>Team 4MENOY · Web Programming Club, UIT</p>
+          </div>
+        </button>
+        <button class="award" type="button" data-img="assets/certs/1.jpg">
+          <div class="award-thumb"><img src="assets/certs/1.jpg" alt="Informatics Excellent Student Contest — Second Prize certificate" loading="lazy" /></div>
+          <div class="award-body">
+            <div class="yr">2020 – 2021</div>
+            <h3>Second Prize — Informatics, Provincial Contest</h3>
+            <p>Quang Ngai Province · Excellent Student Contest</p>
+          </div>
+        </button>
+        <button class="award" type="button" data-img="assets/certs/naver.jpg">
+          <div class="award-thumb"><img src="assets/certs/naver.jpg" alt="NAVER Vietnam AI Hackathon 2025 certificate" loading="lazy" /></div>
+          <div class="award-body">
+            <div class="yr">2025</div>
+            <h3>NAVER Vietnam AI Hackathon 2025</h3>
+            <p>Final Round Participant</p>
+          </div>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="wrap rv">
+      <div class="sec-head"><span class="idx">04</span><h2>Projects</h2></div>
+
+      <div class="proj-feature">
+        <div class="ptop">
+          <div>
+            <div class="role">Full-stack Developer · Team Project</div>
+            <h3>History Reborn</h3>
+          </div>
+        </div>
+        <p class="desc">
+          An interactive web platform that lets users explore and learn about Vietnamese
+          historical sites in an immersive, engaging way.
+        </p>
+        <ul class="feat-list">
+          <li>AI-powered heritage exploration with a <b>RAG system</b> (Naver CLOVA Studio + Qdrant vector DB)</li>
+          <li>Real-time features: <b>Socket.io chat rooms</b>, an <b>AI chatbot</b> for heritage Q&amp;A, interactive quizzes with a leaderboard</li>
+          <li>Maps integration (<b>Google Maps / MapBoxGL</b>) for virtual site exploration</li>
+          <li><b>RESTful API</b> with MVC architecture, JWT auth, responsive UI (TailwindCSS)</li>
+        </ul>
+        <div class="stack">
+          <span>Node.js</span><span>Express</span><span>MongoDB</span><span>React</span><span>Redux Toolkit</span><span>Socket.io</span><span>Qdrant</span><span>Naver CLOVA</span>
+        </div>
+        <div class="proj-links">
+          <a href="https://github.com/th4nh-phat09/history-heritage-api" target="_blank">Backend ↗</a>
+          <a href="https://github.com/th4nh-phat09/vn-heritage" target="_blank">Frontend ↗</a>
+          <a href="https://github.com/th4nh-phat09/Model_Classifier" target="_blank">Model ↗</a>
+        </div>
+      </div>
+
+      <div class="proj-feature">
+        <div class="ptop">
+          <div>
+            <div class="role">Full-stack Developer · Team Project</div>
+            <h3>Ai Cung Muon Khoe</h3>
+          </div>
+        </div>
+        <p class="desc">
+          A health-tracking application that helps users monitor their wellbeing — by age and BMI,
+          across common conditions — build personal health profiles, and get early warnings from an ML model.
+        </p>
+        <ul class="feat-list">
+          <li><b>Personal health profiles</b> with tracking by age, BMI and disease indicators</li>
+          <li>An <b>ML warning model</b> that analyzes a user's health data and raises early-risk alerts</li>
+          <li>Dedicated <b>admin dashboard</b> for managing users, content and health records</li>
+          <li><b>RESTful API</b> built with NestJS — typed, modular and scalable</li>
+        </ul>
+        <div class="stack">
+          <span>TypeScript</span><span>NestJS</span><span>MySQL</span><span>React</span><span>Vite</span><span>TailwindCSS</span>
+        </div>
+        <div class="proj-links">
+          <a href="https://github.com/zerrorTwo/aicungmuonkhoe_be/tree/develop" target="_blank">Backend ↗</a>
+          <a href="https://github.com/zerrorTwo/aicungmuonkhoe_client" target="_blank">Frontend ↗</a>
+          <a href="https://github.com/zerrorTwo/aicungmuonkhoe_admin/tree/develop" target="_blank">Admin ↗</a>
+        </div>
+      </div>
+
+      <div class="proj-grid">
+        <a class="pcard" href="https://github.com/th4nh-phat09" target="_blank">
+          <div class="ptop2"><span class="idx">repo</span><span class="arr">↗</span></div>
+          <h3>More on GitHub</h3>
+          <p>All my other repositories &amp; projects.</p>
+          <div class="stack"><span>@th4nh-phat09</span></div>
+        </a>
+        <!-- Slot reserved for more projects -->
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="wrap rv">
+      <div class="sec-head"><span class="idx">05</span><h2>Experience</h2></div>
+      <div class="timeline">
+
+        <div class="xp">
+          <div class="when now">02/2026 – Present</div>
+          <div>
+            <h3>Game Developer</h3>
+            <div class="co">ACE Galaxy</div>
+            <div class="loc">Ho Chi Minh City</div>
+            <ul>
+              <li>Build real-time multiplayer game systems where <b>multithreading &amp; concurrency</b> are core — handling many simultaneous players and game rooms with safe, synchronized state.</li>
+              <li>Migrated the <b>game portal from a monolith to 12 microservices</b>, improving scalability and maintainability.</li>
+              <li>Cloned and built a <b>fish-shooting game</b>: implemented the <b>lobby / play</b> screens and a <b>booster</b> system with animations and effects.</li>
+              <li>Developed game clients with <b>Cocos2d-x</b>, integrating real-time multiplayer through <b>SmartFoxServer 2X</b>.</li>
+            </ul>
           </div>
         </div>
 
-        <div class="card">
-          <h3>Ai Cung Muon Khoe</h3>
-          <p>Ứng dụng full-stack (backend + client) — phần backend xử lý nghiệp vụ và API cho client TypeScript.</p>
-          <div class="stack"><span>TypeScript</span><span>Node.js</span></div>
-          <div class="card-links">
-            <a href="https://github.com/zerorTwo/aicungmuonkhoe_be" target="_blank">Backend ↗</a>
-            <a href="https://github.com/zerorTwo/aicungmuonkhoe_client" target="_blank">Client ↗</a>
+        <div class="xp">
+          <div class="when">11/2025 – 01/2026</div>
+          <div>
+            <h3>Intern Software Developer</h3>
+            <div class="co">BitGroup</div>
+            <div class="loc">Ho Chi Minh City</div>
+            <ul>
+              <li>Architected and built a <b>sports stadium booking platform</b>: backend (<b>NestJS / Prisma</b>), mobile app (<b>React Native / Expo</b>) and admin dashboard (<b>Next.js</b>) — all in TypeScript.</li>
+              <li>Optimized performance with <b>cursor-based pagination</b> for stadium &amp; slot listings (filtered by stadiumId, slotId, date, rating, ...), reducing DB load and smoothing infinite scroll on mobile.</li>
+              <li>Redesigned the schema for <b>multi-type image storage</b> with Prisma + PostgreSQL — polymorphic relationships supporting many image categories (stadium, sport, avatars) with better scalability.</li>
+            </ul>
           </div>
         </div>
 
-        <div class="card">
-          <h3>Model Classifier</h3>
-          <p>Mô hình phân loại bằng Python — pipeline xử lý dữ liệu và huấn luyện model.</p>
-          <div class="stack"><span>Python</span><span>Machine Learning</span></div>
-          <div class="card-links">
-            <a href="https://github.com/th4nh-phat09/Model_Classifier" target="_blank">Source ↗</a>
-          </div>
-        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap rv">
+      <div class="sec-head"><span class="idx">06</span><h2>Contact</h2></div>
+      <div class="contact-solo">
+        <p class="contact-lead">Got an opportunity or an idea?<br><span class="dim">I'm always happy to chat.</span></p>
+          <div class="clinks">
+            <a class="clink" href="mailto:thanphat354@gmail.com"><span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></span><span class="cv">thanphat354@gmail.com</span></a>
+            <a class="clink" href="tel:+84349475209"><span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><span class="cv">0349 475 209</span></a>
+            <a class="clink" href="https://github.com/th4nh-phat09" target="_blank"><span class="ci"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17 4.6 18 4.9 18 4.9c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg></span><span class="cv">github.com/th4nh-phat09</span></a>
+            <a class="clink" href="https://www.linkedin.com/in/natp09" target="_blank"><span class="ci"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></span><span class="cv">linkedin.com/in/natp09</span></a>
+          </div>
       </div>
     </div>
   </section>
 
   <footer>
-    <div class="wrap">
-      Built by Nguyen An Thanh Phat · <a href="https://github.com/th4nh-phat09">@th4nh-phat09</a>
+    <div class="wrap foot-in">
+      <span class="fl">© 2026 Nguyen An Thanh Phat</span>
+      <div class="foot-links">
+        <a href="https://github.com/th4nh-phat09" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17 4.6 18 4.9 18 4.9c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>GitHub</a>
+        <a href="https://www.linkedin.com/in/natp09" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>LinkedIn</a>
+        <a href="mailto:thanphat354@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>Email</a>
+      </div>
     </div>
   </footer>
+
+  <!-- Lightbox -->
+  <div class="lb" id="lb">
+    <button class="lb-x" id="lbX" aria-label="close">×</button>
+    <img id="lbImg" src="" alt="Certificate preview" />
+  </div>
+
+  <script>
+    const nav = document.getElementById('nav');
+    const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 16);
+    onScroll(); window.addEventListener('scroll', onScroll, { passive: true });
+
+    const navLinks = document.getElementById('navLinks');
+    document.getElementById('burger').addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+    const links = [...navLinks.querySelectorAll('a')];
+    const spy = new IntersectionObserver((es) => es.forEach(e => {
+      if (e.isIntersecting) links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+    }), { rootMargin: '-45% 0px -50% 0px' });
+    document.querySelectorAll('section[id]').forEach(s => spy.observe(s));
+
+    const rev = new IntersectionObserver((es) => es.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); rev.unobserve(e.target); }
+    }), { threshold: 0.1 });
+    document.querySelectorAll('.rv').forEach(el => rev.observe(el));
+
+    // Lightbox for certificates
+    const lb = document.getElementById('lb');
+    const lbImg = document.getElementById('lbImg');
+    document.querySelectorAll('.award').forEach(a => a.addEventListener('click', () => {
+      lbImg.src = a.dataset.img; lb.classList.add('open');
+    }));
+    const closeLb = () => { lb.classList.remove('open'); lbImg.src = ''; };
+    lb.addEventListener('click', closeLb);
+    document.getElementById('lbX').addEventListener('click', closeLb);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); });
+  </script>
 </body>
 </html>
